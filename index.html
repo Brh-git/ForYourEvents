@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Your Events</title>
     <style>
         body {
@@ -17,18 +18,16 @@
             top: 20px;
             left: 20px;
         }
-
         .logo-container img {
             width: 150px;
         }
 
-        /* MENU HAMBURGER JUSTE SOUS LE LOGO */
+        /* MENU HAMBURGER */
         .menu-container {
             position: absolute;
-            top: 180px; /* juste en dessous du logo */
+            top: 180px;
             left: 20px;
         }
-
         .menu-button {
             background-color: black;
             color: white;
@@ -38,13 +37,11 @@
             font-weight: bold;
             user-select: none;
         }
-
         .menu-items {
-            display: none; /* caché par défaut */
+            display: none;
             flex-direction: column;
             margin-top: 5px;
         }
-
         .menu-items a {
             text-decoration: none;
             color: black;
@@ -54,17 +51,15 @@
             margin-top: 5px;
             display: block;
         }
-
         .menu-items a:hover {
             background-color: #ddd;
         }
 
         /* CONTENU PRINCIPAL */
         .content {
-            margin-top: 50px; /* pour ne pas chevaucher le menu/logo */
+            margin-top: 50px;
             padding: 20px;
         }
-
         h1 {
             color: #333;
         }
@@ -79,11 +74,9 @@
             max-width: 700px;
             background-color: #f9f9f9;
         }
-
         .scrollable-section h3 {
             margin-bottom: 15px;
         }
-
         .scrollable-section p {
             text-align: center;
             margin: 10px 0;
@@ -96,7 +89,6 @@
             text-align: center;
             margin-top: 50px;
         }
-
         .social-btn {
             color: white; 
             border: none; 
@@ -106,24 +98,34 @@
             border-radius: 5px;
             margin: 5px;
         }
+        .instagram-btn { background-color: #E1306C; }
+        .tiktok-btn { background-color: black; }
 
-        .instagram-btn {
-            background-color: #E1306C;
+        /* MEDIA QUERIES POUR RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .logo-container img { width: 120px; }
+            .menu-container { top: 150px; }
+            .scrollable-section { max-width: 90%; max-height: 350px; padding: 15px; }
+            .scrollable-section p { font-size: 16px; }
         }
 
-        .tiktok-btn {
-            background-color: black;
+        @media (max-width: 480px) {
+            .logo-container img { width: 100px; }
+            .menu-container { top: 120px; left: 10px; }
+            .scrollable-section { max-width: 95%; max-height: 300px; padding: 10px; }
+            .scrollable-section p { font-size: 14px; }
         }
+
     </style>
 </head>
 <body>
 
-<!-- LOGO EN HAUT À GAUCHE -->
+<!-- LOGO -->
 <div class="logo-container">
     <img src="logo.png" alt="Logo du site">
 </div>
 
-<!-- MENU JUSTE SOUS LE LOGO -->
+<!-- MENU -->
 <div class="menu-container">
     <div class="menu-button" onclick="toggleMenu()">Menu</div>
     <div class="menu-items" id="menuItems">
@@ -159,19 +161,15 @@
 <!-- FOOTER -->
 <footer>
     <p>© ForYourEvents</p>
-    <button onclick="window.open('https://www.instagram.com/for.your.eventss/', '_blank')" class="social-btn instagram-btn">
-        Instagram
-    </button>
-    <button onclick="window.open('https://www.tiktok.com/@for.your.eventss?lang=en', '_blank')" class="social-btn tiktok-btn">
-        TikTok
-    </button>
+    <button onclick="window.open('https://www.instagram.com/for.your.eventss/', '_blank')" class="social-btn instagram-btn">Instagram</button>
+    <button onclick="window.open('https://www.tiktok.com/@for.your.eventss?lang=en', '_blank')" class="social-btn tiktok-btn">TikTok</button>
 </footer>
 
-<!-- SCRIPT MENU HAMBURGER -->
+<!-- SCRIPT MENU -->
 <script>
 function toggleMenu() {
     const menu = document.getElementById("menuItems");
-    if(menu.style.display === "flex"){
+    if(menu.style.display === "flex") {
         menu.style.display = "none";
     } else {
         menu.style.display = "flex";
