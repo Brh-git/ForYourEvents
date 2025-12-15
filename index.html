@@ -2,30 +2,33 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Your Events</title>
 <style>
     body {
         font-family: 'Times New Roman';
+        text-align: center;
         margin: 0;
         padding: 0;
     }
 
-    /* HEADER */
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
+    /* NAVIGATION LOGO */
+    .logo-container {
+        position: absolute;
+        top: 20px;
+        left: 20px;
     }
 
     .logo-container img {
         width: 150px;
-        max-width: 40%;
-        height: auto;
     }
 
-    /* MENU */
+    /* MENU HAMBURGER */
+    .menu-container {
+        position: absolute;
+        top: 180px;
+        left: 20px;
+    }
+
     .menu-button {
         background-color: black;
         color: white;
@@ -33,20 +36,20 @@
         cursor: pointer;
         border-radius: 6px;
         font-weight: bold;
-        margin-top: 15px;
+        user-select: none;
     }
 
     .menu-items {
         display: none;
         flex-direction: column;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     .menu-items a {
         text-decoration: none;
         color: black;
         background-color: #fff;
-        padding: 10px;
+        padding: 8px 15px;
         border-radius: 5px;
         margin-top: 5px;
         display: block;
@@ -56,8 +59,9 @@
         background-color: #ddd;
     }
 
-    /* CONTENT */
+    /* CONTENU PRINCIPAL */
     .content {
+        margin-top: 50px;
         padding: 20px;
     }
 
@@ -65,13 +69,14 @@
         color: #333;
     }
 
+    /* SECTION SCROLLABLE */
     .scrollable-section {
         max-height: 400px;
         overflow-y: auto;
         padding: 20px;
         border: 1px solid #ccc;
         margin: 20px auto;
-        max-width: 90%;
+        max-width: 700px;
         background-color: #f9f9f9;
     }
 
@@ -82,14 +87,14 @@
     .scrollable-section p {
         text-align: center;
         margin: 10px 0;
-        font-size: 16px;
+        font-size: 18px;
         line-height: 1.4;
     }
 
     /* FOOTER */
     footer {
         text-align: center;
-        padding: 20px;
+        margin-top: 50px;
     }
 
     .social-btn {
@@ -105,36 +110,62 @@
     .instagram-btn { background-color: #E1306C; }
     .tiktok-btn { background-color: black; }
 
-    /* MEDIA QUERIES */
-    @media (max-width: 768px) {
-        .logo-container img { max-width: 50%; }
-        .scrollable-section { max-height: 350px; padding: 15px; }
-    }
+    /* MEDIA QUERY POUR MOBILE / TABLETTE */
+    @media screen and (max-width: 768px) {
+        .logo-container {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: 10px 0;
+        }
 
-    @media (max-width: 480px) {
-        .logo-container img { max-width: 70%; }
-        .scrollable-section { max-height: 300px; padding: 10px; }
-        .scrollable-section p { font-size: 14px; }
-        .menu-button { padding: 8px 15px; font-size: 14px; }
-        .menu-items a { padding: 8px; font-size: 14px; }
+        .logo-container img {
+            width: 120px;
+        }
+
+        .menu-container {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            margin-top: 0;
+            padding: 10px;
+        }
+
+        .scrollable-section {
+            max-width: 90%;
+            max-height: none; /* enlever hauteur fixe pour mobile */
+            padding: 15px;
+        }
+
+        .menu-items a {
+            padding: 10px;
+            font-size: 16px;
+        }
     }
 </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <img src="logo.png" alt="Logo du site">
-    </div>
+<!-- LOGO -->
+<div class="logo-container">
+    <img src="logo.png" alt="Logo du site">
+</div>
 
+<!-- MENU -->
+<div class="menu-container">
     <div class="menu-button" onclick="toggleMenu()">Menu</div>
     <div class="menu-items" id="menuItems">
         <a href="index.html">Accueil</a>
         <a href="commande.html">Commande</a>
         <a href="contact.html">Contact</a>
     </div>
-</header>
+</div>
 
+<!-- CONTENU PRINCIPAL -->
 <div class="content">
     <h1>Bienvenue chez ForYourEvents</h1>
 
@@ -157,16 +188,22 @@
     </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
     <p>© ForYourEvents</p>
     <button onclick="window.open('https://www.instagram.com/for.your.eventss/', '_blank')" class="social-btn instagram-btn">Instagram</button>
     <button onclick="window.open('https://www.tiktok.com/@for.your.eventss?lang=en', '_blank')" class="social-btn tiktok-btn">TikTok</button>
 </footer>
 
+<!-- SCRIPT MENU HAMBURGER -->
 <script>
 function toggleMenu() {
     const menu = document.getElementById("menuItems");
-    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    if(menu.style.display === "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+    }
 }
 </script>
 
